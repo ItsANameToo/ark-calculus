@@ -62,7 +62,8 @@ class Calculator
     public function perBlock(int $value): BigNumber
     {
         if ($value >= $this->votingPool) {
-            return BigNumber::create($this->reward);
+            return BigNumber::create($this->reward)
+                ->times($this->profitShare / 100);
         }
 
         return BigNumber::create($this->reward)
